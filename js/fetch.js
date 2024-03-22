@@ -1,7 +1,7 @@
 /** @format */
 
 const weatherApiUrl = 'https://api.openweathermap.org';
-const apiKey = 'd91f911bcf2c0f925fb6535547a5ddc9';
+const apiKey = '5e2a14f24b3c957bf999f79c03a70840';
 
 function fetchWeather(location) {
 	const lat = location;
