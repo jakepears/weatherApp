@@ -1,9 +1,7 @@
 /** @format */
 
-// Function to display the current weather data fetched from OpenWeather api.
 function renderCurrentWeather(city, weather) {
 	const date = dayjs().format('M/D/YYYY');
-	// Store response data from our fetch request in constiables
 	const tempF = weather.main.temp;
 	const windMph = weather.wind.speed;
 	const humidity = weather.main.humidity;
@@ -41,17 +39,13 @@ function renderCurrentWeather(city, weather) {
 	todayContainer.append(card);
 }
 
-// Function to display a forecast card given an object from open weather api
-// daily forecast.
 function renderForecastCard(forecast) {
-	// constants for data from api
 	const iconUrl = `https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
 	const iconDescription = forecast.weather[0].description;
 	const tempF = forecast.main.temp;
 	const humidity = forecast.main.humidity;
 	const windMph = forecast.wind.speed;
 
-	// Create elements for a card
 	const col = document.createElement('div');
 	const card = document.createElement('div');
 	const cardBody = document.createElement('div');
@@ -74,7 +68,6 @@ function renderForecastCard(forecast) {
 	windEl.setAttribute('class', 'card-text');
 	humidityEl.setAttribute('class', 'card-text');
 
-	// Add content to elements
 	cardTitle.textContent = dayjs(forecast.dt_txt).format('M/D/YYYY');
 	weatherIcon.setAttribute('src', iconUrl);
 	weatherIcon.setAttribute('alt', iconDescription);
@@ -85,9 +78,7 @@ function renderForecastCard(forecast) {
 	forecastContainer.append(col);
 }
 
-// Function to display 5 day forecast.
 function renderForecast(dailyForecast) {
-	// Create unix timestamps for start and end of 5 day forecast
 	const startDt = dayjs().add(1, 'day').startOf('day').unix();
 	const endDt = dayjs().add(6, 'day').startOf('day').unix();
 
@@ -102,9 +93,7 @@ function renderForecast(dailyForecast) {
 	forecastContainer.append(headingCol);
 
 	for (let i = 0; i < dailyForecast.length; i++) {
-		// First filters through all of the data and returns only data that falls between one day after the current data and up to 5 days later.
 		if (dailyForecast[i].dt >= startDt && dailyForecast[i].dt < endDt) {
-			// Then filters through the data and returns only data captured at noon for each day.
 			if (dailyForecast[i].dt_txt.slice(11, 13) == '12') {
 				renderForecastCard(dailyForecast[i]);
 			}

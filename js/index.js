@@ -1,9 +1,8 @@
 /** @format */
-// Import Statement
+
 import { fetchCoords } from './fetch.js';
 import { initSearchHistory } from './search.js';
 
-// DOM references
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const todayContainer = document.querySelector('#today');

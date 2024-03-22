@@ -7,14 +7,14 @@ function renderSearchHistory() {
 	searchHistoryContainer.innerHTML = '';
 
 	for (let i = searchHistory.length - 1; i >= 0; i--) {
-		const btn = document.createElement('button');
-		btn.setAttribute('type', 'button');
-		btn.setAttribute('aria-controls', 'today forecast');
-		btn.classList.add('history-btn', 'btn-history');
+		const button = document.createElement('button');
+		button.setAttribute('type', 'button');
+		button.setAttribute('aria-controls', 'today forecast');
+		button.classList.add('history-button', 'button-history');
 
-		btn.setAttribute('data-search', searchHistory[i]);
-		btn.textContent = searchHistory[i];
-		searchHistoryContainer.append(btn);
+		button.setAttribute('data-search', searchHistory[i]);
+		button.textContent = searchHistory[i];
+		searchHistoryContainer.append(button);
 	}
 }
 
@@ -22,6 +22,7 @@ function appendToHistory(search) {
 	if (searchHistory.indexOf(search) !== -1) {
 		return;
 	}
+
 	searchHistory.push(search);
 
 	localStorage.setItem('search-history', JSON.stringify(searchHistory));
