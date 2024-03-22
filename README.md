@@ -1,5 +1,4 @@
 <!-- @format -->
-<!-- @format -->
 
 # Weather App
 
@@ -33,7 +32,7 @@ The deployed application can be accessed by clicking on the following link: [Wea
 
 ## Screenshot
 
-![Weather App](./assets/imgs/weatherApp.png)
+![Weather App](./imgs/weatherApp.png)
 
 ## License
 
