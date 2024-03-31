@@ -1,4 +1,6 @@
 /** @format */
+import { appendToHistory } from './index.js';
+import renderItems from './render.js';
 
 const weatherApiUrl = 'https://api.openweathermap.org';
 const apiKey = '5e2a14f24b3c957bf999f79c03a70840';

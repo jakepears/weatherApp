@@ -1,5 +1,7 @@
 /** @format */
 
+const forecastContainer = document.querySelector('#forecast');
+
 function renderCurrentWeather(city, weather) {
 	const date = dayjs().format('M/D/YYYY');
 	const tempF = weather.main.temp;
@@ -101,7 +103,31 @@ function renderForecast(dailyForecast) {
 	}
 }
 
-export function renderItems(city, data) {
-	renderCurrentWeather(city, data.list[0], data.city.timezone);
-	renderForecast(data.list);
+export default function renderItems(city, data) {
+	if (data && data.list && data.list.length > 0) {
+		renderCurrentWeather(city, data.list[0], data.city.timezone);
+		renderForecast(data.list);
+	} else if (data && data.cod === '400') {
+		const error = document.createElement('div');
+		error.setAttribute('class', 'alert alert-danger');
+		error.setAttribute('role', 'alert');
+		error.textContent = data.message;
+		forecastContainer.innerHTML = '';
+		forecastContainer.append(error);
+		error.addEventListener('click', () => {
+			forecastContainer.innerHTML = '';
+		});
+	} else {
+		console.error('Invalid weather data:', data);
+		// Handle the case when the weather data is invalid or missing
+		const error = document.createElement('div');
+		error.setAttribute('class', 'alert alert-danger');
+		error.setAttribute('role', 'alert');
+		error.textContent = 'Invalid weather data';
+		forecastContainer.innerHTML = '';
+		forecastContainer.append(error);
+		error.addEventListener('click', () => {
+			forecastContainer.innerHTML = '';
+		});
+	}
 }
